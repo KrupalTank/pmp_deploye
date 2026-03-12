@@ -1,0 +1,83 @@
+﻿@model PlacementMentorshipPortal.Models.Session
+
+@{
+    ViewData["Title"] = "Add Session";
+}
+
+<link rel="stylesheet" href="~/css/forms.css" />
+
+<h2 class="page-title">📅 Add Session</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["Success"]
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger text-center">
+        @TempData["Error"]
+    </div>
+}
+
+@if (TempData["GeneratedLink"] != null)
+{
+    <div class="alert alert-info text-center">
+        Generated Meeting Link:
+        <a href="@TempData["GeneratedLink"]" target="_blank">@TempData["GeneratedLink"]</a>
+    </div>
+}
+
+<div class="form-card">
+
+    <form asp-controller="Coordinator" asp-action="AddSessionMethod" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <!-- Coordinator -->
+        <div class="mb-3">
+            <label class="form-label">Coordinator</label>
+            <input type="text" class="form-control" value="@User.Identity.Name" readonly />
+        </div>
+
+        <!-- Branch Dropdown -->
+        <div class="mb-3">
+            <label asp-for="Bid" class="form-label">Branch</label>
+            <select asp-for="Bid" class="form-control" asp-items="ViewBag.BID">
+                <option value="">-- Select Branch --</option>
+            </select>
+            <span asp-validation-for="Bid" class="text-danger"></span>
+        </div>
+
+        <!-- Hidden Link Field -->
+        <div class="mb-3" style="display:none">
+            <label asp-for="Link" class="form-label">Description About Session</label>
+            <input asp-for="Link" class="form-control" value="xyz" />
+            <span asp-validation-for="Link" class="text-danger"></span>
+        </div>
+
+        <!-- Session Details -->
+        <div class="mb-3">
+            <label asp-for="Detail" class="form-label">Description About Session</label>
+            <input asp-for="Detail" class="form-control" placeholder="Enter session details..." />
+            <span asp-validation-for="Detail" class="text-danger"></span>
+        </div>
+
+        <!-- Session Time -->
+        <div class="mb-3">
+            <label asp-for="Time" class="form-label">Time</label>
+            <input asp-for="Time" class="form-control" placeholder="Enter session time..." />
+            <span asp-validation-for="Time" class="text-danger"></span>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary btn-submit">
+            ➕ Create Session
+        </button>
+    </form>
+
+    <!-- Back -->
+    <a asp-action="Index" class="back-link text-primary">
+        ← Back to List
+    </a>
+</div>

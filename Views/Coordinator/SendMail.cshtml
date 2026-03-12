@@ -1,0 +1,140 @@
+﻿@model PlacementMentorshipPortal.Models.SendMailViewModel
+
+@{
+    ViewData["Title"] = "Send Mail";
+}
+
+<link rel="stylesheet" href="~/css/forms.css" />
+
+<!-- ===== Hero Header ===== -->
+<div class="mail-hero text-center mb-4">
+    <h2 class="mail-title">📧 Send Placement Mail</h2>
+    <p class="mail-subtitle">Notify students with important placement updates quickly and clearly</p>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["Success"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger text-center">
+        @TempData["Error"]
+    </div>
+}
+
+<!-- ===== Enhanced Form Card ===== -->
+<div class="form-card mail-enhanced-card">
+
+    <form asp-action="SendMailMethod" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+
+        <!-- Coordinator -->
+        <div class="mb-3">
+            <label class="form-label">Coordinator</label>
+            <input type="text" class="form-control readonly-field" value="@User.Identity.Name" readonly />
+        </div>
+
+        <!-- Branch -->
+        <div class="mb-3">
+            <label class="form-label">Branch</label>
+            <select asp-for="Bid" asp-items="ViewBag.BID" class="form-control">
+                <option value="">-- Select Branch --</option>
+            </select>
+        </div>
+
+        <!-- Subject -->
+        <div class="mb-3">
+            <label asp-for="Subject" class="form-label"></label>
+            <input asp-for="Subject" class="form-control" placeholder="Enter mail subject..." />
+            <span asp-validation-for="Subject" class="text-danger"></span>
+        </div>
+
+        <!-- Content -->
+        <div class="mb-3">
+            <label asp-for="Content" class="form-label"></label>
+            <textarea asp-for="Content" rows="6" class="form-control" placeholder="Write your placement message here..."></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+
+        <!-- Attachments -->
+        <div class="mb-4">
+            <label class="form-label">Attachments (optional)</label>
+            <input asp-for="Attachments" type="file" name="Attachments" multiple class="form-control file-soft" />
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary btn-submit mail-send-btn">
+            🚀 Send Mail to Students
+        </button>
+    </form>
+
+    <!-- Back -->
+    <a asp-controller="Coordinator" asp-action="Index" class="back-link text-primary">
+        ← Back to Dashboard
+    </a>
+</div>
+
+<style>
+
+    /* ===== Hero Section ===== */
+    .mail-hero {
+        padding-top: 10px;
+    }
+
+    .mail-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: #0d6efd;
+    }
+
+    .mail-subtitle {
+        color: #6c757d;
+        margin-top: 6px;
+    }
+
+    /* ===== Enhanced Card Glow ===== */
+    .mail-enhanced-card {
+        position: relative;
+        border: 1px solid rgba(13,110,253,0.15);
+        box-shadow: 0 12px 35px rgba(13,110,253,0.08);
+        transition: 0.25s ease;
+    }
+
+        .mail-enhanced-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 45px rgba(13,110,253,0.15);
+        }
+
+    /* ===== Readonly Field ===== */
+    .readonly-field {
+        background: #f1f5ff;
+        font-weight: 500;
+    }
+
+    /* ===== File Input Soft Style ===== */
+    .file-soft {
+        background: #f8f9ff;
+        border-style: dashed;
+    }
+
+    /* ===== Send Button Upgrade ===== */
+    .mail-send-btn {
+        font-size: 1.05rem;
+        letter-spacing: 0.3px;
+        transition: 0.25s ease;
+    }
+
+        .mail-send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(13,110,253,0.25);
+        }
+
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<PlacementMentorshipPortal.Models.Coordinator>
+
+@{
+    ViewData["Title"] = "Coordinators";
+}
+
+
+<h1>Coordinators</h1>
+@if (Model == null || !Model.Any())
+{
+    <h2 class="text-light">No Coordinators Found</h2>
+}
+else
+{
+    <div class="coordinator-list mt-3">
+        @foreach (var item in Model)
+        {
+            <div class="coordinator-row">
+
+                <div class="coord-left">
+                    <h5 class="coord-name">@item.Tname</h5>
+                    <div class="coord-meta">
+                        @item.BidNavigation.Bname • @item.YidNavigation.Year1
+                    </div>
+                </div>
+
+                <div class="coord-right">
+                    <a href="mailto:@item.Contact" class="coord-email">
+                        📧 @item.Contact
+                    </a>
+                </div>
+
+            </div>
+        }
+    </div>
+}
+

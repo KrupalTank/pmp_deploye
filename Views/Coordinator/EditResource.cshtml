@@ -1,0 +1,76 @@
+﻿@model PlacementMentorshipPortal.Models.Resource
+
+@{
+    ViewData["Title"] = "Edit Resource";
+}
+
+<link rel="stylesheet" href="~/css/forms.css" />
+
+<h2 class="page-title">✏️ Edit Resource</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["Success"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger text-center">
+        @TempData["Error"]
+    </div>
+}
+
+<div class="form-card">
+
+    <form asp-action="EditResourceMethod">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <input type="hidden" asp-for="Id" />
+
+        <!-- Coordinator -->
+        <div class="mb-3">
+            <label class="form-label">Coordinator</label>
+            <input type="text" class="form-control" value="@User.Identity.Name" readonly />
+        </div>
+
+        <!-- Branch Dropdown -->
+        <div class="mb-3">
+            <label asp-for="Bid" class="form-label">Branch</label>
+            <select asp-for="Bid" class="form-control" asp-items="ViewBag.Bid"></select>
+            <span asp-validation-for="Bid" class="text-danger"></span>
+        </div>
+
+        <!-- Resource Link -->
+        <div class="mb-3">
+            <label asp-for="Rlink" class="form-label">Resource Link</label>
+            <input asp-for="Rlink" class="form-control" />
+            <span asp-validation-for="Rlink" class="text-danger"></span>
+        </div>
+
+        <!-- Details -->
+        <div class="mb-3">
+            <label asp-for="Details" class="form-label">Details</label>
+            <input asp-for="Details" class="form-control" />
+            <span asp-validation-for="Details" class="text-danger"></span>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary btn-submit">
+            💾 Save Changes
+        </button>
+    </form>
+
+    <!-- Back -->
+    <a asp-action="Index" class="back-link text-primary">
+        ← Back to List
+    </a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,139 @@
+﻿@model List<PlacementMentorshipPortal.Models.DeactivateCoordinatorsViewModel>
+
+<link rel="stylesheet" href="~/css/forms.css" />
+
+<h2 class="page-title">⚠️ Deactivate Coordinators</h2>
+
+<div class="form-card deactivate-card">
+
+    <form asp-action="DeactivateCoordinatorsMethod" method="post" id="deactivateForm">
+
+        <!-- Coordinators Table -->
+        <div class="table-responsive mb-4">
+            <table class="table align-middle custom-table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Select</th>
+                        <th>Name</th>
+                        <th>Branch</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr class="coord-row">
+                            <td class="text-center">
+                                <input type="hidden" asp-for="@Model[i].Tid" />
+                                <input type="checkbox" asp-for="@Model[i].IsSelected" class="coord-check" />
+                            </td>
+                            <td class="fw-semibold">@Model[i].Tname</td>
+                            <td class="text-muted">@Model[i].BranchName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex justify-content-between gap-3">
+            <button type="button" onclick="confirmDeactivation()" class="btn btn-danger btn-submit deactivate-btn">
+                🛑 Deactivate Selected
+            </button>
+
+            <a asp-action="Index" class="btn btn-light btn-submit cancel-btn">
+                ✖ Cancel
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        function confirmDeactivation() {
+            const checkedCount = document.querySelectorAll('.coord-check:checked').length;
+
+            if (checkedCount === 0) {
+                alert("Please select at least one coordinator.");
+                return;
+            }
+
+            if (confirm(`Are you sure you want to deactivate ${checkedCount} selected coordinator(s)?`)) {
+                document.getElementById('deactivateForm').submit();
+            }
+        }
+    </script>
+}
+
+<style>
+    /* =====================================================
+       Deactivate Page – Theme Upgrade
+    ===================================================== */
+
+    .deactivate-card {
+        max-width: 720px;
+    }
+
+    /* ---- Table Styling ---- */
+    .custom-table {
+        border-radius: 14px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+    }
+
+    .custom-table thead {
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        color: white;
+    }
+
+    .custom-table th {
+        font-weight: 600;
+        border: none;
+    }
+
+    .custom-table td {
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    /* ---- Row Hover Glow ---- */
+    .coord-row {
+        transition: 0.25s ease;
+    }
+
+    .coord-row:hover {
+        background: rgba(99, 102, 241, 0.08);
+        transform: scale(1.01);
+        box-shadow: 0 6px 18px rgba(99, 102, 241, 0.18);
+    }
+
+    /* ---- Checkbox Accent ---- */
+    .coord-check {
+        width: 18px;
+        height: 18px;
+        accent-color: #ec4899;
+        cursor: pointer;
+    }
+
+    /* ---- Buttons ---- */
+    .deactivate-btn {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        border: none;
+        box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+        transition: 0.25s ease;
+    }
+
+    .deactivate-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(239, 68, 68, 0.45);
+    }
+
+    .cancel-btn {
+        border: 1px solid #dee2e6;
+        transition: 0.25s ease;
+    }
+
+    .cancel-btn:hover {
+        background: #f1f5ff;
+        border-color: #6366f1;
+    }
+</style>

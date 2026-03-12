@@ -1,0 +1,46 @@
+﻿@model PlacementMentorshipPortal.Models.Year
+
+@{
+    ViewData["Title"] = "Add Year";
+}
+
+<link rel="stylesheet" href="~/css/forms.css" />
+
+<h2 class="page-title">📅 Add Year</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["Success"]
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger text-center">
+        @TempData["Error"]
+    </div>
+}
+
+<div class="form-card">
+
+    <form asp-action="AddYearMethod">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <!-- Year Input -->
+        <div class="mb-3">
+            <label asp-for="Year1" class="form-label">Year</label>
+            <input asp-for="Year1" class="form-control" placeholder="Enter year" />
+            <span asp-validation-for="Year1" class="text-danger"></span>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary btn-submit">
+            ➕ Add Year
+        </button>
+    </form>
+
+    <!-- Back -->
+    <a asp-action="Index" class="back-link text-primary">
+        ← Back to List
+    </a>
+</div>

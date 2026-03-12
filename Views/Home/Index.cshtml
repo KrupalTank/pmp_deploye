@@ -1,0 +1,66 @@
+﻿@model IEnumerable<PlacementMentorshipPortal.Models.Company>
+
+@{
+    ViewData["Title"] = "Companies";
+}
+
+<h1 class="mb-4">Companies</h1>
+
+<!-- Filter Section -->
+<div class="resource-filter mb-4">
+    <form asp-action="Index" method="get" class="row g-3 align-items-end">
+
+        <div class="col-md-4">
+            <label class="filter-label">Select Branch</label>
+            <select name="SelectedBranch" class="form-select filter-select"
+                    asp-items='(SelectList)(ViewData["Branch"])'>
+                <option value="0">All Branches</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="filter-label">Select Year</label>
+            <select name="SelectedYear" class="form-select filter-select"
+                    asp-items='(SelectList)ViewData["Year"]'>
+                <option value="0">All Years</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <button type="submit" class="btn filter-btn w-100">
+                Apply Filter
+            </button>
+        </div>
+
+    </form>
+</div>
+
+
+@if (Model == null || !Model.Any())
+{
+    <p>No companies found.</p>
+}
+else
+{
+    <!-- Card Grid Layout -->
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card company-card h-100">
+
+                    <!-- Company Logo -->
+                    <a asp-controller="Home" asp-action="CompanyProfile" asp-route-id="@item.Cid" class="text-decoration-none">
+                        <img src="~/Logo/@item.Logo" class="card-img-top p-3" style="height:180px; object-fit:contain;" alt="@item.Cname Logo" />
+                    </a>
+
+                    <!-- Company Name -->
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-semibold">@item.Cname</h5>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+}

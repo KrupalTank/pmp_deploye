@@ -1,0 +1,119 @@
+﻿
+
+@{
+    ViewData["Title"] = "Coordinator Dashboard";
+}
+
+@{
+    if (TempData["Success"] != null)
+    {
+        <div class="alert alert-info">
+            @TempData["Success"]
+        </div>
+        <br />
+    }
+}
+
+@{
+    ViewData["Title"] = "Coordinator Dashboard";
+}
+
+<div class="dashboard-welcome text-center mb-5">
+    <h1>Welcome, Coordinator 👋</h1>
+    <p class="text-muted">Monitor your branch's placement performance in real-time.</p>
+</div>
+
+<div class="container mb-5">
+    <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-header bg-white border-0 py-3">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="fw-bold mb-0">📁 Branch Placement Register</h5>
+                </div>
+                <div class="col-md-6">
+                    <select id="yearFilter" class="form-select border-primary">
+                        <option value="">-- Select Academic Year --</option>
+                        @foreach (var year in ViewBag.Years)
+                        {
+                            <option value="@year.Yid">Academic Year @year.Year1</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0" id="placementTable" style="display:none;">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4">Student Name</th>
+                            <th>Email/Contact</th>
+                            <th>Company</th>
+                            <th class="text-center">Package (LPA)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="placementBody">
+                    </tbody>
+                </table>
+                <div id="noDataMessage" class="text-center py-5 text-muted">
+                    <p class="mb-0">Please select a year to view the official placement ledger.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm border-0 rounded-4 mt-4">
+    <div class="card-header bg-white border-0 py-3">
+        <h5 class="fw-bold mb-0 text-primary">📄 Modular Report Builder</h5>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label fw-bold">1. Select Year</label>
+                <select id="reportYearId" class="form-select border-primary">
+                    @foreach (var year in ViewBag.Years)
+                    {
+                        <option value="@year.Yid">@year.Year1</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label fw-bold">2. Experience Lookback</label>
+                <select id="lookbackYears" class="form-select border-primary">
+                    <option value="1">Last 1 Year (Current)</option>
+                    <option value="2">Last 2 Years</option>
+                    <option value="3">Last 3 Years</option>
+                    <option value="4">Last 4 Years</option>
+                    <option value="5">Last 5 Years</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">3. Include Sections</label>
+                    <div class="include-sections">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="chkStudents" checked>
+                            <label class="form-check-label">Placed Student Details</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="chkResources" checked>
+                            <label class="form-check-label">Branch Resources</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="chkRounds" checked>
+                            <label class="form-check-label">Placement Procedures</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-3 text-center">
+                <button onclick="downloadCustomReport()" class="btn btn-primary px-5">Generate PDF Report</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/CoordinatorDashBoard.js"></script>
+}

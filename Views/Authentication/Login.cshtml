@@ -1,0 +1,58 @@
+﻿@model PlacementMentorshipPortal.Models.Coordinator
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<link rel="stylesheet" href="~/css/forms.css" />
+
+<h2 class="page-title">🔐 Login</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger text-center">
+        @TempData["Error"]
+    </div>
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["Success"]
+    </div>
+}
+
+<div class="form-card">
+
+    <form asp-action="LoginMethod" method="post">
+
+        <div class="mb-3">
+            <label class="form-label">Username (UID)</label>
+            <input type="text"
+                   name="username"
+                   class="form-control"
+                   placeholder="Enter your UID"
+                   required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password"
+                   name="pwd"
+                   class="form-control"
+                   placeholder="Enter your password"
+                   required />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit">
+            Sign In
+        </button>
+
+    </form>
+
+    <a asp-controller="Authentication"
+       asp-action="ForgotPassword"
+       class="back-link text-primary">
+        Forgot Password?
+    </a>
+</div>

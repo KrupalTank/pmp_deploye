@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PlacementMentorshipPortal.Models.Session>
+
+@{
+    ViewData["Title"] = "View Sessions";
+}
+
+<div class="container mt-4">
+
+    <!-- Page Heading -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">📅 Scheduled Sessions</h2>
+        <p class="text-muted">All sessions arranged by coordinators</p>
+    </div>
+
+    <!-- Sessions Card -->
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle text-center">
+
+                    <thead class="table-primary">
+                        <tr>
+                            <th>🔗 Link</th>
+                            <th>📝 Detail</th>
+                            <th>⏰ Time</th>
+                            <th>🎓 Branch</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="5" class="text-muted py-4">
+                                    No sessions available.
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="@item.Link" target="_blank" class="btn btn-sm btn-outline-primary">
+                                            Open Link
+                                        </a>
+                                    </td>
+
+                                    <td class="text-start">
+                                        @item.Detail
+                                    </td>
+
+                                    <td>
+                                        @item.Time
+                                    </td>
+
+                                    <td>
+                                        <span class="badge bg-info text-dark px-3 py-2">
+                                            @item.BidNavigation.Bname
+                                        </span>
+                                    </td>
+
+                                
+                                </tr>
+                            }
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

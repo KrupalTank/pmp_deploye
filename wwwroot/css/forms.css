@@ -1,0 +1,66 @@
+﻿body {
+}
+/* ===== Page Heading ===== */
+.page-title {
+    text-align: center;
+    font-weight: 700;
+    color: #0d6efd;
+    margin-bottom: 25px;
+}
+
+/* ===== Form Card ===== */
+.form-card {
+    max-width: 500px;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Labels ===== */
+.form-label {
+    font-weight: 600;
+    color: #333;
+}
+
+/* ===== Inputs ===== */
+.form-control {
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    transition: 0.2s ease-in-out;
+}
+
+    .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.15);
+    }
+
+/* ===== Submit Button ===== */
+.btn-submit {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 600;
+}
+
+/* ===== Back Link ===== */
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+
+/* ===== Alerts ===== */
+.alert {
+    max-width: 500px;
+    margin: 15px auto;
+    border-radius: 10px;
+}

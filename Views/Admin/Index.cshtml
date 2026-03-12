@@ -1,0 +1,220 @@
+﻿@model PlacementMentorshipPortal.Models.AdminDashboardViewModel
+@using System.Text.Json
+@using PlacementMentorshipPortal.Models
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    // Serialize all data once at the top [cite: 41, 42, 43, 44]
+    var yearLabelsJson = JsonSerializer.Serialize(Model.YearLabels ?? new List<string>());
+    var yearDataJson = JsonSerializer.Serialize(Model.YearData ?? new List<int>());
+    var yearPercentagesJson = JsonSerializer.Serialize(Model.YearPercentages ?? new List<double>());
+
+    var branchLabelsJson = JsonSerializer.Serialize(Model.BranchLabels ?? new List<string>());
+    var branchDataJson = JsonSerializer.Serialize(Model.BranchData ?? new List<int>());
+    var branchPercentagesJson = JsonSerializer.Serialize(Model.BranchPercentages ?? new List<double>());
+
+    var cyLabelsJson = JsonSerializer.Serialize(Model.CurrentYearBranchLabels ?? new List<string>());
+    var cyDataJson = JsonSerializer.Serialize(Model.CurrentYearBranchData ?? new List<int>());
+    var cyPercentagesJson = JsonSerializer.Serialize(Model.CurrentYearBranchPercentages ?? new List<double>());
+
+    var branches = (IEnumerable<Branch>)ViewBag.Branches ?? Enumerable.Empty<Branch>();
+}
+
+<link rel="stylesheet" href="~/css/forms.css" />
+
+<h2 class="dashboard-title">📊 Admin Dashboard</h2>
+
+<div class="dashboard-grid">
+    <div class="dashboard-card">
+        <h4>Total Placements vs Year</h4>
+        <div class="chart-box">
+            <canvas id="chartYear"></canvas>
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        <h4>Total Placements vs Branch</h4>
+        <div class="chart-box">
+            <canvas id="chartBranch"></canvas>
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        <h4>Placements in <span id="currentYearLabel">@Model.CurrentYear</span> vs Branch</h4>
+        <div class="year-select-wrapper" style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <label for="yearSelect" style="font-weight:600;margin-right:4px;">Year</label>
+            <select id="yearSelect" class="year-select" style="padding:6px 10px;border-radius:8px;border:1px solid #c7d2fe;">
+                @foreach (var y in (IEnumerable<Year>)ViewBag.Years ?? Enumerable.Empty<Year>())
+                {
+                    <option value="@y.Year1" selected="@(y.Year1 == Model.CurrentYear ? "selected" : null)">@y.Year1</option>
+                }
+            </select>
+            <span id="yearNoData" class="no-data" style="display:none;margin-left:8px;color:#6b7280;">No data available</span>
+        </div>
+        <div class="chart-box">
+            <canvas id="chartCurrentYearBranch"></canvas>
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        <h4>Placements by Year for Selected Branch</h4>
+        <div class="branch-select-wrapper">
+            <label>Branch</label>
+            <select id="branchSelect" class="branch-select">
+                @foreach (var b in branches)
+                {
+                    <option value="@b.Bid">@b.Bname</option>
+                }
+            </select>
+            <span id="branchNoData" class="no-data">No data available</span>
+        </div>
+        <div class="chart-box">
+            <canvas id="chartBranchYear"></canvas>
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        <h4>Average vs Highest Package per Branch</h4>
+        <div class="year-select-wrapper">
+            <label for="packageYearSelect">Year</label>
+            <select id="packageYearSelect" class="year-select">
+                <option value="0">All Years</option>
+                @foreach (var y in (IEnumerable<Year>)ViewBag.Years ?? Enumerable.Empty<Year>())
+                {
+                    <option value="@y.Year1">@y.Year1</option>
+                }
+            </select>
+        </div>
+        <div class="chart-box">
+            <canvas id="chartPackageStats"></canvas>
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        <h4>Placements vs Companies</h4>
+        <div class="year-select-wrapper" style="margin-bottom: 10px;">
+            <label for="companyYearSelect">Year</label>
+            <select id="companyYearSelect" class="year-select">
+                <option value="0">All Years</option>
+                @foreach (var y in (IEnumerable<Year>)ViewBag.Years ?? Enumerable.Empty<Year>())
+                {
+                    <option value="@y.Year1">@y.Year1</option>
+                }
+            </select>
+        </div>
+        <div class="company-chart-container" style="height: 400px; overflow-y: auto; overflow-x: hidden;">
+            <div id="companyCanvasWrapper" style="position: relative; width: 100%;">
+                <canvas id="chartCompanyPlacements"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-card activity-feed-card">
+        <h4>🛡️ Recent Activity Feed</h4>
+
+        <div class="filter-controls">
+            <input type="date" id="auditStart" class="dashboard-input" />
+            <input type="date" id="auditEnd" class="dashboard-input" />
+            <button id="btnFilterAudit" class="btn-gradient">Filter</button>
+            <button id="btnResetAudit" class="btn-soft">Reset</button>
+        </div>
+
+        <div class="activity-list" id="auditFeedContainer">
+            @* Populated dynamically *@
+        </div>
+    </div>
+
+
+    <div class="dashboard-card report-card">
+        <h4>📑 Dynamic Annual Report</h4>
+
+        <div class="report-options">
+            <label class="report-check">
+                <input type="checkbox" id="chkSummary" checked>
+                <span>Executive Summary (KPIs)</span>
+            </label>
+
+            <label class="report-check">
+                <input type="checkbox" id="chkGrowth" checked>
+                <span>Year-over-Year Growth</span>
+            </label>
+
+            <label class="report-check">
+                <input type="checkbox" id="chkBranchEff">
+                <span>Branch Efficiency Table</span>
+            </label>
+
+            <label class="report-check">
+                <input type="checkbox" id="chkCompanies">
+                <span>Corporate Insights</span>
+            </label>
+
+            <label class="report-check">
+                <input type="checkbox" id="chkDetails" checked>
+                <span>Detailed Student Records</span>
+            </label>
+        </div>
+
+        <div class="report-actions">
+            <select id="reportYearSelect" class="year-select">
+                @foreach (var y in (IEnumerable<Year>)ViewBag.Years)
+                {
+                    <option value="@y.Year1">@y.Year1</option>
+                }
+            </select>
+
+            <button onclick="downloadDynamicReport()" class="btn-gradient">
+                Generate PDF
+            </button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/AdminDashboard.js" asp-append-version="true"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Capture All Data from Razor [cite: 67, 75]
+            const yearLabels = @Html.Raw(yearLabelsJson);
+            const yearData = @Html.Raw(yearDataJson);
+            const yearPercentages = @Html.Raw(yearPercentagesJson);
+
+            const branchLabels = @Html.Raw(branchLabelsJson);
+            const branchData = @Html.Raw(branchDataJson);
+            const branchPercentages = @Html.Raw(branchPercentagesJson);
+
+            const cyLabels = @Html.Raw(cyLabelsJson);
+            const cyData = @Html.Raw(cyDataJson);
+            const cyPercentages = @Html.Raw(cyPercentagesJson);
+
+            const currentYearStr = "@Model.CurrentYear";
+
+            // 2. Initialize Event Listeners [cite: 68]
+            initDashboardEventListeners();
+
+            // 3. Render Dual-Axis Charts (Placements + Percentage Line) [cite: 69, 70, 76]
+            createDualChart('chartYear', yearLabels, yearData, yearPercentages, 'Placements');
+            createDualChart('chartBranch', branchLabels, branchData, branchPercentages, 'Placements');
+            createDualChart('chartCurrentYearBranch', cyLabels, cyData, cyPercentages, 'Placements in ' + currentYearStr);
+
+            // 4. Trigger Initial Dynamic Data [cite: 71, 72]
+            loadPackageStats();
+            loadAuditFeed();
+
+            // 5. Handle First Branch Logic [cite: 73, 74]
+            const bSelect = document.getElementById('branchSelect');
+            if (bSelect && bSelect.options.length > 0) {
+                const firstBranch = bSelect.querySelector('option:not([value=""])');
+                if (firstBranch) {
+                    bSelect.value = firstBranch.value;
+                    loadBranchYearChart(firstBranch.value);
+                }
+            }
+
+            // 6. Delayed Load for Horizontal Company Chart
+            setTimeout(() => loadCompanyPlacementChart(), 100);
+        });
+    </script>
+}

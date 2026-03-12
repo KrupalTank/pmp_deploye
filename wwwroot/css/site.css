@@ -1,0 +1,1023 @@
+﻿/* =====================================================
+   GLOBAL BASE
+===================================================== */
+
+body {
+    padding-top: 80px; /* space for fixed navbar */
+    background: #f8fafc;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.custom-navbar {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(99, 102, 241, 0.25);
+    padding: 0.8rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12), 0 2px 8px rgba(236, 72, 153, 0.10);
+}
+
+
+    /* Brand */
+    .custom-navbar .navbar-brand {
+        font-size: 1.35rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #4f46e5, #9333ea, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Nav links */
+    .custom-navbar .nav-link {
+        color: #334155 !important;
+        font-weight: 600;
+        transition: 0.25s ease;
+    }
+
+        .custom-navbar .nav-link:hover {
+            color: #6366f1 !important;
+            transform: translateY(-1px);
+        }
+
+        .custom-navbar .nav-link.active {
+            border-bottom: 2px solid #6366f1;
+        }
+
+
+/* =====================================================
+   HEADER BUTTONS
+===================================================== */
+
+.btn-login,
+.btn-dashboard {
+    background: linear-gradient(135deg, #38bdf8, #6366f1, #ec4899);
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 6px 16px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.btn-logout {
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    border-radius: 10px;
+    padding: 6px 16px;
+    font-weight: 600;
+    background: #fff;
+    transition: 0.25s ease;
+}
+
+.btn-login:hover,
+.btn-dashboard:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.35);
+}
+
+.btn-logout:hover {
+    background: #ef4444;
+    color: #fff;
+}
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.site-footer {
+    background: rgba(255, 255, 250, 0.75);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(99, 102, 241, 0.25);
+    margin-top: 70px;
+    color: #475569;
+    box-shadow: 0 -8px 24px rgba(99, 102, 241, 0.10);
+}
+
+.footer-brand {
+    font-weight: 700;
+    background: linear-gradient(90deg, #4f46e5, #9333ea, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-title {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.footer-links a {
+    color: #6366f1;
+    transition: 0.2s;
+}
+
+    .footer-links a:hover {
+        color: #ec4899;
+    }
+
+
+
+
+
+
+
+/* ===== Company Cards – Light Premium Theme ===== */
+.company-card {
+    background: linear-gradient(145deg, #ffffff, #f1f5ff);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    border: 1px solid rgba(59, 130, 246, 0.15);
+    /* soft blue shadow */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+    /* Hover effect → premium blue glow */
+    .company-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), 0 0 25px rgba(59, 130, 246, 0.35), 0 0 45px rgba(37, 99, 235, 0.25);
+        border-color: rgba(59, 130, 246, 0.35);
+    }
+
+    /* Logo area */
+    .company-card img {
+        height: 160px;
+        object-fit: contain;
+        background: linear-gradient(180deg, #f8fbff, #eef4ff);
+        padding: 20px;
+    }
+
+    /* Company name */
+    .company-card .card-title {
+        color: #0f172a;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+    }
+
+    /* Card body */
+    .company-card .card-body {
+        padding: 20px;
+        text-align: center;
+    }
+
+
+
+/*body {
+    background:
+     Strong red glow from top 
+    radial-gradient(circle at 50% -10%, rgba(220, 38, 38, 0.28), transparent 55%),
+     Purple mid ambient for smooth transition 
+    radial-gradient(circle at 20% 40%, rgba(139, 92, 246, 0.12), transparent 60%),
+     Strong blue glow from bottom 
+    radial-gradient(circle at 50% 110%, rgba(37, 99, 235, 0.30), transparent 60%),
+     Deep base so footer doesn't merge 
+    #020617;
+}*/
+
+
+body {
+    background: radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.18), transparent 45%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.18), transparent 45%), linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 100%);
+}
+
+
+/* =====================================================
+   RESOURCE FILTER — LIGHT GLASS STYLE
+===================================================== */
+
+.resource-filter {
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(16px);
+    border-radius: 18px;
+    padding: 24px;
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    box-shadow: 0 12px 30px rgba(99, 102, 241, 0.12), 0 6px 18px rgba(236, 72, 153, 0.10);
+}
+
+/* Label */
+.filter-label {
+    font-weight: 600;
+    color: #3730a3;
+}
+
+/* Select */
+.filter-select {
+    border-radius: 12px;
+    border: 1px solid #c7d2fe;
+    padding: 10px 12px;
+    background: #ffffff;
+    color: #1e293b;
+    transition: 0.25s ease;
+}
+
+    .filter-select:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 0.15rem rgba(99, 102, 241, 0.18);
+    }
+
+/* Button */
+.filter-btn {
+    background: linear-gradient(135deg, #38bdf8, #6366f1, #ec4899);
+    border: none;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 12px;
+    padding: 11px;
+    transition: all 0.3s ease;
+}
+
+    .filter-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px rgba(99, 102, 241, 0.35), 0 6px 16px rgba(236, 72, 153, 0.25);
+    }
+
+
+/* =====================================================
+   RESOURCE CARDS — LIGHT GLASS DESIGN
+===================================================== */
+
+.resource-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+    padding: 22px;
+    border: 1px solid rgba(99, 102, 241, 0.18);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.12), 0 4px 12px rgba(236, 72, 153, 0.08);
+    transition: all 0.35s ease;
+}
+
+    /* Hover lift */
+    .resource-card:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 16px 40px rgba(99, 102, 241, 0.22), 0 8px 22px rgba(236, 72, 153, 0.18);
+    }
+
+
+/* ===== Branch Badge ===== */
+.resource-branch {
+    display: inline-block;
+    background: linear-gradient(135deg, #e0f2fe, #ede9fe, #fce7f3);
+    color: #3730a3;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+
+/* ===== Details Text ===== */
+.resource-details {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: #334155;
+    margin-bottom: 14px;
+}
+
+
+/* ===== Open Button ===== */
+.resource-btn {
+    background: linear-gradient(135deg, #38bdf8, #6366f1, #ec4899);
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 9px 16px;
+    transition: 0.25s ease;
+}
+
+    .resource-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35), 0 4px 14px rgba(236, 72, 153, 0.25);
+    }
+
+/* ===== Resource Filter Bar ===== */
+
+/* ===== Resource Filter Bar — Light Glass Style ===== */
+.resource-filter {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+    padding: 24px;
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.12), 0 4px 12px rgba(236, 72, 153, 0.10);
+}
+
+/* ===== Label ===== */
+.filter-label {
+    font-weight: 600;
+    color: #3730a3; /* deep indigo */
+    margin-bottom: 6px;
+}
+
+/* ===== Select Box ===== */
+.filter-select {
+    border-radius: 12px;
+    border: 1px solid #c7d2fe;
+    padding: 10px 12px;
+    background: #ffffff;
+    color: #1e293b;
+    transition: all 0.25s ease;
+}
+
+    .filter-select:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 0.15rem rgba(99, 102, 241, 0.18);
+    }
+
+/* ===== Apply Button ===== */
+.filter-btn {
+    background: linear-gradient(135deg, #38bdf8, #6366f1, #ec4899);
+    border: none;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 12px;
+    padding: 11px;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35), 0 4px 14px rgba(236, 72, 153, 0.25);
+}
+
+.filter-select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 10px rgba(59,130,246,0.4);
+}
+
+
+
+
+
+
+
+/* Coordinator List Layout */
+.coordinator-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Gradient themed coordinator card */
+.coordinator-row {
+    background: linear-gradient(135deg, #ffffff, #f5f7ff);
+
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(244, 114, 182, 0.35); /* soft pink border */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease;
+}
+
+    /* Premium dark-blue hover glow */
+    .coordinator-row:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), /* depth shadow */
+        0 0 18px rgba(37, 99, 235, 0.45), /* soft blue glow */
+        0 0 32px rgba(79, 70, 229, 0.25); /* subtle indigo spread */
+
+        border-color: rgba(37, 99, 235, 0.45); /* blue highlight border */
+    }
+
+
+/* Left side name */
+.coord-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #4f46e5, #9333ea, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+}
+
+/* Branch + Year meta text */
+.coord-meta {
+    font-size: 0.9rem;
+    color: #64748b; /* soft slate gray */
+    font-weight: 500;
+}
+
+/* Email link styling */
+.coord-email {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #2563eb; /* clean blue */
+    background: rgba(37, 99, 235, 0.08);
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+}
+
+    /* Hover effect for email */
+    .coord-email:hover {
+        color: #ffffff;
+        background: linear-gradient(90deg, #4f46e5, #9333ea, #ec4899);
+        box-shadow: 0 4px 12px rgba(147, 51, 234, 0.35);
+    }
+
+
+
+/*for coordinator index slidebar page*/
+/* OPEN button → RIGHT side */
+.sidebar-open-btn {
+    position: fixed;
+    top: 70px; /* below navbar */
+    right: 15px; /* moved to right */
+    z-index: 1100;
+    background: linear-gradient(135deg, #7c3aed, #dc2626);
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(124,58,237,0.6);
+}
+
+/* Sidebar container → RIGHT */
+.coord-sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(18px);
+    border-left: 1px solid rgba(99, 102, 241, 0.25);
+    box-shadow: -8px 0 30px rgba(99, 102, 241, 0.18);
+    padding: 22px 16px;
+    transition: right 0.35s ease;
+    z-index: 1200;
+}
+
+    /* Active → slide in */
+    .coord-sidebar.active {
+        right: 0;
+    }
+
+/* Sidebar header */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #1e293b;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+/* Close button */
+.sidebar-close-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #ef4444;
+    cursor: pointer;
+}
+
+/* Links */
+.coord-sidebar a {
+    display: block;
+    color: #334155;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    transition: 0.25s ease;
+}
+
+    .coord-sidebar a:hover {
+        background: linear-gradient(135deg, #e0e7ff, #fce7f3);
+        color: #4f46e5;
+        transform: translateX(4px);
+    }
+
+/* Header sidebar toggle button */
+.btn-sidebar-toggle
+{
+    background: linear-gradient(135deg, #38bdf8, #6366f1, #ec4899);
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 18px;
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.35);
+    transition: 0.25s ease;
+}
+
+.btn-sidebar-toggle:hover,
+.sidebar-open-btn:hover {
+    transform: translateY(-1px);
+}
+
+
+/*for company profile page*/
+/* ===== Company Header ===== */
+
+.company-logo {
+    height: 120px;
+    object-fit: contain;
+    /* soft blue glow instead of red */
+    filter: drop-shadow(0 6px 18px rgba(59, 130, 246, 0.35));
+}
+
+.company-name {
+    color: #0f172a;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* ===== Accordion Info Cards – Light Glass Theme ===== */
+
+.info-card {
+    background: linear-gradient(145deg, #ffffff, #f1f5ff);
+    border: 1px solid rgba(59, 130, 246, 0.18);
+    border-radius: 20px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    overflow: hidden;
+    /* soft layered shadow */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+    .info-card:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08), 0 0 25px rgba(99, 102, 241, 0.25), 0 0 45px rgba(56, 189, 248, 0.25);
+        border-color: rgba(99, 102, 241, 0.35);
+    }
+
+/* ===== Header ===== */
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #0f172a;
+}
+
+    .info-header h4 {
+        font-weight: 600;
+        margin: 0;
+    }
+
+/* ===== Expandable Content ===== */
+
+.info-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, margin-top 0.3s ease;
+    color: #475569;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.info-card.active .info-content {
+    max-height: 600px;
+    margin-top: 14px;
+}
+
+/* ===== Arrow animation ===== */
+
+.arrow {
+    transition: transform 0.3s ease;
+    color: #6366f1;
+    font-weight: bold;
+}
+
+.info-card.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* ===== Round list ===== */
+
+.round-list {
+    padding-left: 18px;
+}
+
+    .round-list li {
+        margin-bottom: 6px;
+    }
+
+/* ===== Student line ===== */
+
+.student-line {
+    margin-bottom: 8px;
+}
+
+/* Package highlight badge */
+
+.package {
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* Remove button spacing fix */
+
+.btn-delete-confirm {
+    border-radius: 8px;
+}
+
+/* ===== ROUND TIMELINE ===== */
+
+.round-timeline {
+    position: relative;
+    margin-left: 12px;
+    padding-left: 20px;
+    border-left: 2px solid rgba(99,102,241,0.3);
+}
+
+.round-item {
+    position: relative;
+    margin-bottom: 14px;
+    padding-left: 10px;
+    transition: 0.3s ease;
+}
+
+    .round-item:hover {
+        transform: translateX(4px);
+    }
+
+.round-dot {
+    position: absolute;
+    left: -11px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(99,102,241,0.6);
+}
+
+.round-text {
+    color: #334155;
+    font-weight: 500;
+}
+
+
+/* ===== EXPERIENCE CARDS (THEME MATCHED) ===== */
+
+.experience-card {
+    background: linear-gradient(135deg, #ffffff, #f5f7ff);
+    border: 1px solid rgba(99,102,241,0.25);
+    border-radius: 16px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    position: relative;
+    transition: all 0.3s ease;
+    /* soft colorful glow */
+    box-shadow: 0 6px 16px rgba(0,0,0,0.05), 0 0 0 rgba(236,72,153,0);
+}
+
+    .experience-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.08), 0 0 18px rgba(99,102,241,0.25), 0 0 28px rgba(236,72,153,0.18);
+    }
+
+    /* text inside card */
+
+    .experience-card p {
+        margin: 0;
+        font-size: 0.98rem;
+        line-height: 1.7;
+        /* modern bluish readable text */
+        color: #1e3a8a; /* deep indigo-blue */
+        font-weight: 500;
+        /* soft gradient feeling */
+        background: linear-gradient(90deg, #1e3a8a, #6d28d9, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+
+/* decorative quote */
+
+.quote {
+    position: absolute;
+    top: -12px;
+    left: 14px;
+    font-size: 30px;
+    /* pink-purple accent */
+    color: #ec4899;
+    opacity: 0.35;
+}
+
+/*extra*/
+/* ================= Students Placed Row UI ================= */
+
+.students-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ---- Each Row ---- */
+.student-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(99, 102, 241, 0.18);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.10);
+    transition: 0.25s ease;
+}
+
+    .student-row:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 26px rgba(99, 102, 241, 0.20);
+    }
+
+/* ---- Left section ---- */
+.student-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.student-name {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 1rem;
+}
+
+/* Branch & Year → IMPORTANT → highlighted */
+.student-details {
+    font-size: 0.9rem;
+    margin-top: 2px;
+}
+
+.branch {
+    color: #4f46e5;
+    font-weight: 600;
+}
+
+.year {
+    color: #9333ea;
+    font-weight: 600;
+    margin-left: 6px;
+}
+
+/* ---- Center mail ---- */
+.student-center {
+    flex: 1;
+    text-align: center;
+}
+
+.mail-link {
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: 500;
+}
+
+    .mail-link:hover {
+        text-decoration: underline;
+    }
+
+/* ---- Right side ---- */
+.student-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Package badge upgrade */
+.package {
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+}
+
+/*for company color-profile experience */
+/* ================= EXPERIENCE SECTION (Improved Visibility) ================= */
+
+.experience-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border-left: 4px solid #6366f1;
+    transition: 0.3s ease;
+}
+
+    .experience-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 40px rgba(79,70,229,0.15);
+    }
+
+.experience-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.quote {
+    font-size: 1.8rem;
+    color: #4f46e5;
+}
+
+.experience-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #111827;
+}
+
+/* Points container */
+.experience-points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Individual line */
+.experience-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+/* Bigger and more visible dot */
+.exp-dot {
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, #4f46e5, #ec4899);
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+}
+
+/* MAIN TEXT VISIBILITY IMPROVEMENT */
+.exp-text {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #111827; /* Darker text */
+    line-height: 1.6;
+}
+
+
+/*for coordinator dashboard*/
+/* ===================================================
+   COORDINATOR DASHBOARD ENHANCEMENTS
+   =================================================== */
+
+/* ---------- Welcome Section ---------- */
+
+.dashboard-welcome h1 {
+    font-weight: 700;
+    color: #4f46e5;
+}
+
+.dashboard-welcome p {
+    font-size: 1rem;
+}
+
+/* ---------- Card Styling ---------- */
+
+.card {
+    border-radius: 20px !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06) !important;
+    transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 45px rgba(79, 70, 229, 0.15) !important;
+    }
+
+    /* Top Accent Line */
+    .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 4px;
+        width: 100%;
+        background: linear-gradient(90deg, #6366f1, #ec4899);
+    }
+
+/* ---------- Dropdown Enhancements ---------- */
+
+.form-select {
+    border-radius: 12px;
+    border: 1px solid #c7d2fe;
+    padding: 8px 12px;
+    transition: 0.2s ease;
+}
+
+    .form-select:focus {
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+    }
+
+/* ---------- Placement Table ---------- */
+
+#placementTable {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+    #placementTable thead {
+        background: linear-gradient(90deg, #eef2ff, #f9fafb);
+    }
+
+    #placementTable th {
+        font-weight: 600;
+        color: #374151;
+        padding: 14px 16px;
+    }
+
+    #placementTable td {
+        padding: 12px 16px;
+        vertical-align: middle;
+    }
+
+    #placementTable tbody tr {
+        transition: 0.2s ease;
+    }
+
+        #placementTable tbody tr:hover {
+            background-color: #f5f7ff;
+        }
+
+    /* Package Column Highlight */
+    #placementTable td:last-child {
+        font-weight: 600;
+        color: #4f46e5;
+    }
+
+/* ---------- No Data Message ---------- */
+
+#noDataMessage {
+    background: #f9fafb;
+    border-radius: 16px;
+    font-size: 0.95rem;
+}
+
+/* ---------- Include Sections Styling ---------- */
+
+.include-sections {
+    background: #f9fafb;
+    padding: 12px 16px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-check-input {
+    accent-color: #6366f1;
+    transform: scale(1.1);
+}
+
+.form-check-label {
+    font-weight: 500;
+    color: #374151;
+}
+
+/* ---------- Generate Button ---------- */
+
+.btn-primary {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border: none;
+    border-radius: 14px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+    }
+
+/* ---------- Report Builder Section ---------- */
+
+.card-header h5 {
+    color: #4f46e5;
+}
+
+.card-body label {
+    color: #111827;
+}

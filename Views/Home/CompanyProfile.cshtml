@@ -1,0 +1,184 @@
+﻿@model PlacementMentorshipPortal.Models.CompanyProfileViewModel
+
+@{
+    ViewData["Title"] = "Company Profile";
+}
+
+<div class="container py-5">
+
+    <!-- Company Header -->
+    <div class="company-header text-center mb-5">
+        <img src="~/Logo/@Model.company.Logo" class="company-logo mb-3" alt="@Model.company.Cname Logo" />
+        <h1 class="company-name">@Model.company.Cname</h1>
+    </div>
+
+    <!-- Accordion Style Sections -->
+    <div class="accordion-section">
+
+        <!-- Round Details -->
+        <div class="info-card" onclick="toggleCard(this)">
+            <div class="info-header">
+                <h4>Round Details</h4>
+                <span class="arrow">▼</span>
+            </div>
+
+            <div class="info-content">
+                @if (!string.IsNullOrWhiteSpace(Model.rounddetail?.Dtext))
+                {
+                    var rounds = Model.rounddetail.Dtext
+                    .Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    <div class="round-timeline">
+                        @foreach (var round in rounds)
+                        {
+                            <div class="round-item">
+                                <div class="round-dot"></div>
+                                <div class="round-text">@round.Trim()</div>
+                            </div>
+                        }
+                    </div>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") && Model.rounddetail != null)
+                    {
+                        <a asp-controller="Coordinator" asp-route-id="@Model.rounddetail.Id" asp-action="DeleteRoundDetail" class="btn btn-danger btn-sm mt-2 btn-delete-confirm">
+                            Remove
+                        </a>
+                    }
+
+                }
+                else
+                {
+                    <p class="text-muted">No round details available.</p>
+                }
+            </div>
+        </div>
+
+
+
+        <!-- Experience Shared -->
+        <!-- Experience Shared -->
+        <div class="info-card" onclick="toggleCard(this)">
+            <div class="info-header">
+                <h4>Experience Shared By Students</h4>
+                <span class="arrow">▼</span>
+            </div>
+
+            <div class="info-content">
+                @if (Model.experience != null && Model.experience.Any())
+                {
+                    @foreach (var exp in Model.experience)
+                    {
+                        var points = exp.Dtext?
+                        .Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                        <div class="experience-card">
+                            <div class="experience-header">
+                                <span class="quote">❝</span>
+                                <span class="experience-title">Student Experience</span>
+                            </div>
+
+                            @if (points != null && points.Any())
+                            {
+                                <div class="experience-points">
+                                    @foreach (var point in points)
+                                    {
+                                        <div class="experience-item">
+                                            <div class="exp-dot"></div>
+                                            <div class="exp-text">@point.Trim()</div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                <a asp-controller="Coordinator"
+                                   asp-action="DeleteDescription"
+                                   asp-route-id="@exp.Id"
+                                   class="btn btn-danger btn-sm mt-3 btn-delete-confirm">
+                                    Remove
+                                </a>
+                            }
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-muted">No experience shared yet.</p>
+                }
+            </div>
+        </div>
+    </div>
+
+        <!-- Students Placed -->
+        <!-- Students Placed -->
+        <div class="info-card" onclick="toggleCard(this)">
+            <div class="info-header">
+                <h4>🎓 Students Placed</h4>
+                <span class="arrow">▼</span>
+            </div>
+
+            <div class="info-content">
+                @if (Model.studentsplaced != null && Model.studentsplaced.Any())
+                {
+                    <div class="students-list">
+                        @foreach (var student in Model.studentsplaced)
+                        {
+                            <div class="student-row">
+
+                                <!-- Left -->
+                                <div class="student-left">
+                                    <div class="student-name">@student.Sname</div>
+
+                                    <div class="student-details">
+                                        <span class="branch">@student.BidNavigation.Bname</span>
+                                        <span class="year">@student.YidNavigation.Year1</span>
+                                    </div>
+                                </div>
+
+                                <!-- Center -->
+                                <div class="student-center">
+                                    <a href="mailto:@student.Contact" class="mail-link">
+                                        📧 @student.Contact
+                                    </a>
+                                </div>
+
+                                <!-- Right -->
+                                <div class="student-right">
+                                    <span class="package">@student.Package LPA</span>
+
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                        <a asp-controller="Coordinator"
+                                           asp-action="DeleteStudent"
+                                           asp-route-id="@student.Id"
+                                           class="btn btn-sm btn-danger btn-delete-confirm">
+                                            Remove
+                                        </a>
+                                    }
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">No students placed information available.</p>
+                }
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+
+<!-- Script -->
+<script>
+    function toggleCard(card) {
+        card.classList.toggle("active");
+    }
+</script>

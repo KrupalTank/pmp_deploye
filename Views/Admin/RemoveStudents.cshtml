@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "RemoveStudents";
+}
+
+<link rel="stylesheet" href="~/css/form.css" />
+
+<div class="form-page">
+    <div class="form-card danger-card">
+        <h1 class="form-title">Remove Students</h1>
+
+        <p class="form-warning">
+            ⚠️ Once you select a year and submit, <strong>all students</strong> from that year will be
+            permanently removed from the database. This action cannot be undone.
+        </p>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Success"]
+            </div>
+        }
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Error"]
+            </div>
+        }
+
+        <form asp-controller="Admin" asp-action="RemoveStudentsMethod" method="post" class="form-container">
+            <div class="form-group">
+                <label class="form-label">Select Year</label>
+
+                <select name="SelectedYear" class="form-control" asp-items="ViewBag.YID">
+                    <option value="All">All</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-danger">
+                    Delete Students
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<PlacementMentorshipPortal.Models.Resource>
+@{
+    ViewData["Title"] = "Resources";
+}
+
+<h1>Resources</h1>
+<div class="resource-filter mb-4">
+    <form asp-controller="Home" asp-action="Resources" method="get" class="row g-3 align-items-end">
+
+        <div class="col-md-6">
+            <label class="filter-label">Select Branch</label>
+            <select name="SelectedBranch" class="form-select filter-select"
+                    asp-items='(SelectList)(ViewData["Branch"])'>
+                <option value="0">All Branches</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit" class="btn filter-btn w-100">
+                Apply Filter
+            </button>
+        </div>
+
+    </form>
+</div>
+
+@if (Model == null || !Model.Any())
+{
+    <h3 class="text-light">No Resources Found</h3>
+}
+else
+{
+    <div class="row g-4 mt-2">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-6">
+                <div class="resource-card h-100">
+
+                    <!-- Branch badge -->
+                    <div class="resource-branch">
+                        @item.BidNavigation.Bname
+                    </div>
+
+                    <!-- Details -->
+                    <p class="resource-details">
+                        @item.Details
+                    </p>
+
+                    <!-- Link button -->
+                    <a href="@item.Rlink" target="_blank" class="btn resource-btn">
+                        Open Resource
+                    </a>
+
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a asp-controller="Coordinator"
+                           asp-action="DeleteResource"
+                           asp-route-id="@item.Id"
+                           class="btn btn-danger btn-sm mt-2 btn-delete-confirm">
+                            Remove
+                        </a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
+

@@ -1,0 +1,318 @@
+﻿
+.dashboard-title {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #4f46e5;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.dashboard-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transition: 0.3s ease;
+}
+
+    .dashboard-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 40px rgba(79,70,229,0.15);
+    }
+
+    .dashboard-card h4 {
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: #111827;
+    }
+
+.chart-box {
+    height: 260px;
+}
+
+.branch-select-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.branch-select {
+    border-radius: 10px;
+    padding: 6px 10px;
+    border: 1px solid #c7d2fe;
+}
+
+.no-data {
+    color: #6b7280;
+    display: none;
+}
+
+/* #chartCompanyPlacements {
+        padding-left: 10px; /* Gives room for long names */
+}
+
+*/
+/* Specific container for the horizontal company chart */
+.company-chart-container {
+    height: 400px; /* Fixed height for the dashboard card */
+    overflow-y: auto; /* Enable vertical scrolling if content is too long */
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* We will dynamically set the canvas height in JavaScript,
+       so we remove the fixed height constraint here */
+.company-chart-canvas-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/*for audit.*/
+.activity-list {
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+    .activity-item:last-child {
+        border-bottom: none;
+    }
+
+.activity-icon {
+    min-width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+    /* Color coding based on Action types */
+    .activity-icon.add {
+        background-color: #10b981;
+    }
+    /* Green */
+    .activity-icon.update {
+        background-color: #3b82f6;
+    }
+    /* Blue */
+    .activity-icon.delete {
+        background-color: #ef4444;
+    }
+    /* Red */
+    .activity-icon.security {
+        background-color: #f59e0b;
+    }
+/* Orange */
+
+.activity-text {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+.activity-time {
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+/* Custom Scrollbar for the feed */
+.activity-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.activity-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.activity-list::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+
+/*after adding report generation and audit*/
+/* =======================================================
+   DASHBOARD ENHANCEMENTS (Activity + Dynamic Report)
+   ======================================================= */
+
+/* Top accent border for special cards */
+.activity-feed-card,
+.report-card {
+    position: relative;
+    overflow: hidden;
+}
+
+    .activity-feed-card::before,
+    .report-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 4px;
+        width: 100%;
+        background: linear-gradient(90deg, #6366f1, #ec4899);
+    }
+
+/* ---------------- Filter Controls ---------------- */
+
+.filter-controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.dashboard-input {
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    padding: 6px 12px;
+    background: #f9fafb;
+    transition: 0.2s ease;
+    font-size: 0.85rem;
+}
+
+    .dashboard-input:focus {
+        outline: none;
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        background: #ffffff;
+    }
+
+/* ---------------- Buttons ---------------- */
+
+.btn-primary,
+.btn-gradient {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 6px 16px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+    .btn-primary:hover,
+    .btn-gradient:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+    }
+
+.btn-secondary,
+.btn-soft {
+    background: #e5e7eb;
+    color: #374151;
+    border: none;
+    border-radius: 12px;
+    padding: 6px 16px;
+    transition: 0.2s ease;
+}
+
+    .btn-secondary:hover,
+    .btn-soft:hover {
+        background: #d1d5db;
+    }
+
+/* ---------------- Report Options ---------------- */
+
+.report-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.report-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #f3f4f6;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-size: 0.9rem;
+}
+
+    .report-check:hover {
+        background: #e0e7ff;
+    }
+
+    .report-check input {
+        accent-color: #6366f1;
+        transform: scale(1.1);
+    }
+
+/* Report Action Row */
+.report-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Year Select */
+.year-select {
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    padding: 6px 12px;
+    background: #ffffff;
+    min-width: 120px;
+    transition: 0.2s ease;
+}
+
+    .year-select:focus {
+        outline: none;
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+/* ---------------- Activity Feed Enhancement ---------------- */
+
+.activity-item {
+    padding: 12px;
+    border-radius: 14px;
+    transition: 0.2s ease;
+}
+
+    .activity-item:hover {
+        background: #f9fafb;
+        transform: translateX(4px);
+    }
+
+/* Better spacing for activity text */
+.activity-text {
+    font-weight: 500;
+    color: #1f2937;
+}
+
+.activity-time {
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+/* Scrollbar enhancement */
+.activity-list::-webkit-scrollbar-thumb {
+    background: #c7d2fe;
+}
+
+    .activity-list::-webkit-scrollbar-thumb:hover {
+        background: #a5b4fc;
+    }

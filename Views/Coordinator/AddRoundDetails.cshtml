@@ -1,0 +1,57 @@
+﻿@model PlacementMentorshipPortal.Models.Rounddetail
+
+@{
+    ViewData["Title"] = "Add Round Details";
+}
+
+<link rel="stylesheet" href="~/css/forms.css" />
+
+<h2 class="page-title">🏢 Company Placement Round Details</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["Success"]
+    </div>
+}
+
+<div class="form-card">
+
+    <form asp-action="AddRoundDetailsMethod">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <!-- Coordinator -->
+        <div class="mb-3">
+            <label class="form-label">Coordinator</label>
+            <input type="text" class="form-control" value="@User.Identity.Name" readonly />
+        </div>
+
+        <!-- Company Dropdown -->
+        <div class="mb-3">
+            <label asp-for="Cid" class="form-label">Company</label>
+            <select asp-for="Cid" class="form-control" asp-items="ViewBag.Cid">
+                <option value="">-- Select Company --</option>
+            </select>
+            <span asp-validation-for="Cid" class="text-danger"></span>
+        </div>
+
+        <!-- Round Details Textarea -->
+        <div class="mb-3">
+            <label asp-for="Dtext" class="form-label">Round Details</label>
+            <textarea asp-for="Dtext" rows="5" class="form-control" placeholder="Enter placement round process details"></textarea>
+            <span asp-validation-for="Dtext" class="text-danger"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-submit">
+            ➕ Add Round Details
+        </button>
+
+    </form>
+
+    <!-- Back Link -->
+    <a asp-action="Index" class="back-link text-primary">
+        ← Back to List
+    </a>
+</div>

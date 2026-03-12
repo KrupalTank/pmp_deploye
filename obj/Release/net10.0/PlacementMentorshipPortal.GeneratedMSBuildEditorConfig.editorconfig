@@ -1,0 +1,211 @@
+is_global = true
+build_property.TargetFramework = net10.0
+build_property.TargetFramework = net10.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
+build_property.RootNamespace = PlacementMentorshipPortal
+build_property.RootNamespace = PlacementMentorshipPortal
+build_property.ProjectDir = C:\Users\krupal\Desktop\krupal documents\DotNet\PlacementMentorshipPortal_deploye\PlacementMentorshipPortal\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\krupal\Desktop\krupal documents\DotNet\PlacementMentorshipPortal_deploye\PlacementMentorshipPortal
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 10.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/AddBranch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkQnJhbmNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/AddCoordinator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkQ29vcmRpbmF0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/AddStudentCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkU3R1ZGVudENvdW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/AddStudents.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkU3R1ZGVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/AddYear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkWWVhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/DeactivateCoordinators.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVhY3RpdmF0ZUNvb3JkaW5hdG9ycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/EditBranch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEJyYW5jaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/EditCoordinator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdENvb3JkaW5hdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/EditStudentCount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFN0dWRlbnRDb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/EditYear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFllYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/Index2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXgyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Admin/RemoveStudents.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVtb3ZlU3R1ZGVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Authentication/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cRm9yZ290UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Authentication/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Authentication/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cUmVzZXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Authentication/VerifyOtp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cVmVyaWZ5T3RwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/AddCompany.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcQWRkQ29tcGFueS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/AddDescription.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcQWRkRGVzY3JpcHRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/AddResources.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcQWRkUmVzb3VyY2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/AddRoundDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcQWRkUm91bmREZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/AddSession.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcQWRkU2Vzc2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/AddStudents.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcQWRkU3R1ZGVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/EditCompany.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcRWRpdENvbXBhbnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/EditDescription.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcRWRpdERlc2NyaXB0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/EditResource.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcRWRpdFJlc291cmNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/EditRoundDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcRWRpdFJvdW5kRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/EditSession.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcRWRpdFNlc3Npb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/EditStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcRWRpdFN0dWRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/SendMail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcU2VuZE1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Coordinator/ViewSessions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcVmlld1Nlc3Npb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Home/CompanyProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb21wYW55UHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Home/Coordinators.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb29yZGluYXRvcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Home/Resources.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXNvdXJjZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Home/Statistics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdGF0aXN0aWNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/krupal/Desktop/krupal documents/DotNet/PlacementMentorshipPortal_deploye/PlacementMentorshipPortal/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-d5162nxyga

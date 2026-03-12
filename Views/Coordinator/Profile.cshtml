@@ -1,0 +1,358 @@
+﻿@model PlacementMentorshipPortal.Models.CoordinatorProfileViewModel
+
+@{
+    ViewData["Title"] = "Coordinator Profile";
+}
+
+<div class="container py-5">
+
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1 class="company-name">Hello, @User.Identity.Name</h1>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+    <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    @if (Model == null)
+    {
+        <h3 class="text-light">No Data Found</h3>
+    }
+    else
+    {
+        <div class="accordion-section">
+
+            <!-- Companies -->
+            <div class="info-card" onclick="toggleCard(this)">
+                <div class="info-header">
+                    <h4>Companies Managed</h4>
+                    <span class="arrow">▼</span>
+                </div>
+
+                <div class="info-content">
+                    @if (Model.companies != null && Model.companies.Any())
+                    {
+                        @foreach (var item in Model.companies)
+                        {
+                            <p class="student-line">
+                                <strong>@item.Cname</strong>
+
+                                <a asp-action="EditCompany" asp-route-id="@item.Cid"
+                                   class="btn btn-sm btn-primary ms-2">Update</a>
+                            </p>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-muted">No companies found.</p>
+                    }
+                </div>
+            </div>
+
+            <!-- Students Placed -->
+            <div class="info-card" onclick="toggleCard(this)">
+                <div class="info-header">
+                    <h4>Students Placed</h4>
+                    <span class="arrow">▼</span>
+                </div>
+
+                <div class="info-content">
+                    @if (Model.studentsplaced != null && Model.studentsplaced.Any())
+                    {
+                        @foreach (var s in Model.studentsplaced)
+                        {
+                            <p class="student-line">
+                                <strong>@s.Sname</strong>
+                                (@s.CidNavigation.Cname | @s.BidNavigation.Bname - @s.YidNavigation.Year1)
+                                | 💰 @s.Package LPA
+                                | 📧 <a href="mailto:@s.Contact">@s.Contact</a>
+
+                                <a asp-action="EditStudent" asp-route-id="@s.Id"
+                                   class="btn btn-sm btn-primary ms-2">Update</a>
+
+                                <a asp-action="DeleteStudent" asp-route-id="@s.Id"
+                                   class="btn btn-sm btn-danger ms-1 btn-delete-confirm">Delete</a>
+                            </p>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-muted">No student data available.</p>
+                    }
+                </div>
+            </div>
+
+            <!-- Round Details -->
+            <div class="info-card" onclick="toggleCard(this)">
+                <div class="info-header">
+                    <h4>Placement Round Details</h4>
+                    <span class="arrow">▼</span>
+                </div>
+
+                <div class="info-content">
+                    @if (Model.rounddetails != null && Model.rounddetails.Any())
+                    {
+                        @foreach (var r in Model.rounddetails)
+                        {
+                            <p class="student-line">
+                                <strong>@r.CidNavigation.Cname</strong> — @r.Dtext
+
+                                <a asp-action="EditRoundDetail" asp-route-id="@r.Id"
+                                   class="btn btn-sm btn-primary ms-2">Update</a>
+
+                                <a asp-action="DeleteRoundDetail" asp-route-id="@r.Id"
+                                   class="btn btn-sm btn-danger ms-1 btn-delete-confirm">Delete</a>
+                            </p>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-muted">No round details found.</p>
+                    }
+                </div>
+            </div>
+
+            <!-- Experiences -->
+            <div class="info-card" onclick="toggleCard(this)">
+                <div class="info-header">
+                    <h4>Student Experiences</h4>
+                    <span class="arrow">▼</span>
+                </div>
+
+                <div class="info-content">
+                    @if (Model.descriptions != null && Model.descriptions.Any())
+                    {
+                        @foreach (var d in Model.descriptions)
+                        {
+                            <p class="student-line">
+                                <strong>@d.CidNavigation.Cname:</strong> @d.Dtext
+
+                                <a asp-action="EditDescription" asp-route-id="@d.Id"
+                                   class="btn btn-sm btn-primary ms-2">Update</a>
+
+                                <a asp-action="DeleteDescription" asp-route-id="@d.Id"
+                                   class="btn btn-sm btn-danger ms-1 btn-delete-confirm">Delete</a>
+                            </p>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-muted">No experiences found.</p>
+                    }
+                </div>
+            </div>
+
+            <!-- Resources -->
+            <div class="info-card" onclick="toggleCard(this)">
+                <div class="info-header">
+                    <h4>Resources</h4>
+                    <span class="arrow">▼</span>
+                </div>
+
+                <div class="info-content">
+                    @if (Model.resources != null && Model.resources.Any())
+                    {
+                        @foreach (var r in Model.resources)
+                        {
+                            <p class="student-line">
+                                <strong>@r.BidNavigation.Bname</strong>
+                                | <a href="@r.Rlink" target="_blank">Open Link</a>
+                                | @r.Details
+
+                                <a asp-action="EditResource" asp-route-id="@r.Id"
+                                   class="btn btn-sm btn-primary ms-2">Update</a>
+
+                                <a asp-action="DeleteResource" asp-route-id="@r.Id"
+                                   class="btn btn-sm btn-danger ms-1 btn-delete-confirm">Delete</a>
+                            </p>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-muted">No resources found.</p>
+                    }
+                </div>
+            </div>
+
+            <!-- Sessions -->
+            <div class="info-card" onclick="toggleCard(this)">
+                <div class="info-header">
+                    <h4>Sessions</h4>
+                    <span class="arrow">▼</span>
+                </div>
+
+                <div class="info-content">
+                    @if (Model.sessions != null && Model.sessions.Any())
+                    {
+                        @foreach (var s in Model.sessions)
+                        {
+                            <p class="student-line">
+                                <strong>@s.BidNavigation.Bname</strong>
+                                | <a href="@s.Link" target="_blank">Join</a>
+                                | @s.Detail
+                                | 🕒 @s.Time
+
+                                <a asp-action="EditSession" asp-route-id="@s.Id"
+                                   class="btn btn-sm btn-primary ms-2">Update</a>
+
+                                <a asp-action="DeleteSession" asp-route-id="@s.Id"
+                                   class="btn btn-sm btn-danger ms-1 btn-delete-confirm">Delete</a>
+                            </p>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-muted">No sessions found.</p>
+                    }
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+<style>
+    /* ===== Header ===== */
+    .company-name {
+        color: #1e293b;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    /* ===== Light Glass Info Cards ===== */
+    .info-card {
+        background: linear-gradient(135deg, #ffffff, #f5f7ff);
+        border: 1px solid rgba(99, 102, 241, 0.25);
+        border-radius: 18px;
+        padding: 18px 22px;
+        margin-bottom: 18px;
+        cursor: pointer;
+        transition: all 0.35s ease;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    }
+
+        /* Hover glow (blue + purple soft) */
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), 0 0 18px rgba(99, 102, 241, 0.25), 0 0 24px rgba(168, 85, 247, 0.18);
+        }
+
+    /* ===== Header inside card ===== */
+    .info-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #312e81;
+    }
+
+        .info-header h4 {
+            font-weight: 600;
+            margin: 0;
+        }
+
+    /* ===== Expand content ===== */
+    .info-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, margin-top 0.3s ease;
+        color: #334155;
+    }
+
+    .info-card.active .info-content {
+        max-height: 900px;
+        margin-top: 14px;
+    }
+
+    /* Arrow rotation */
+    .arrow {
+        transition: transform 0.3s ease;
+        color: #6366f1;
+        font-size: 18px;
+    }
+
+    .info-card.active .arrow {
+        transform: rotate(180deg);
+    }
+
+    /* ===== Record lines ===== */
+    .student-line {
+        background: linear-gradient(135deg, #eef2ff, #fdf4ff);
+        border: 1px solid rgba(168, 85, 247, 0.18);
+        padding: 10px 14px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+        color: #1e293b;
+        transition: 0.25s ease;
+    }
+
+        /* subtle hover on each record */
+        .student-line:hover {
+            background: linear-gradient(135deg, #e0e7ff, #fce7f3);
+            transform: translateX(4px);
+        }
+
+        /* Links inside lines */
+        .student-line a {
+            color: #4f46e5;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+            .student-line a:hover {
+                text-decoration: underline;
+                color: #7c3aed;
+            }
+
+    /* Muted empty text */
+    .text-muted {
+        color: #64748b !important;
+    }
+
+    /* ===== Action Buttons inside info cards ===== */
+
+    /* Update button → solid modern indigo */
+    .info-card .btn-primary {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        border: none;
+        color: #ffffff;
+        font-weight: 500;
+        border-radius: 8px;
+        padding: 4px 10px;
+        transition: 0.25s ease;
+    }
+
+        .info-card .btn-primary:hover {
+            background: linear-gradient(135deg, #4338ca, #6d28d9);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+        }
+
+
+    /* Delete button → clean visible red */
+    .info-card .btn-danger {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        border: none;
+        color: #ffffff;
+        font-weight: 500;
+        border-radius: 8px;
+        padding: 4px 10px;
+        transition: 0.25s ease;
+    }
+
+        .info-card .btn-danger:hover {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
+        }
+
+</style>
+
+<script>
+    function toggleCard(card) {
+        card.classList.toggle("active");
+    }
+</script>

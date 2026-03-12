@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PlacementMentorshipPortal</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/AdminDashBoard.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/PlacementMentorshipPortal.styles.css" asp-append-version="true" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg custom-navbar navbar-brand">
+
+
+        <div class="container-fluid px-4">
+
+            <!-- Logo / Brand -->
+            <a class="navbar-brand fw-semibold" asp-controller="Home" asp-action="Index">
+                <span class="brand-accent">Placement Mentorship Portal</span>
+            </a>
+
+            <!-- Mobile toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Resources">Resources</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Coordinators">Coordinators</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Statistics"> Statistics </a>
+                    </li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-dashboard" asp-controller="Admin" asp-action="Index">Dashboard</a>
+                            </li>
+                            <!-- Admin sidebar toggle -->
+                            <li class="nav-item">
+                                <button class="btn btn-sidebar-toggle" onclick="toggleAdminSidebar()">☰</button>
+                            </li>
+                        }
+                        else
+                        {
+                            <!-- Sidebar Toggle Button ONLY for Coordinator -->
+                            <li class="nav-item">
+                                <a class="btn btn-dashboard" asp-controller="Coordinator" asp-action="Index">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn btn-sidebar-toggle" onclick="toggleSidebar()">☰</button>
+                            </li>
+
+                        }
+
+                        <li class="nav-item">
+                            <a class="btn btn-logout" asp-controller="Authentication" asp-action="Logout">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="btn btn-login" asp-controller="Authentication" asp-action="Login">Login</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Coordinator"))
+    {
+        <div id="coordSidebar" class="coord-sidebar">
+
+            <div class="sidebar-header">
+                <h4>Coordinator Panel</h4>
+                <button class="sidebar-close-btn" onclick="toggleSidebar()">✕</button>
+            </div>
+            <a asp-controller="Coordinator" asp-action="AddCompany">Add Company</a>
+            <a asp-controller="Coordinator" asp-action="AddRoundDetails">Add Placement Procedure</a>
+            <a asp-controller="Coordinator" asp-action="AddStudents">Add Students Placed</a>
+            <a asp-controller="Coordinator" asp-action="AddDescription">Add Student Experiences</a>
+            <a asp-controller="Coordinator" asp-action="AddResources">Add Resources</a>
+            <a asp-controller="Coordinator" asp-action="AddSession">Add Session</a>
+            <a asp-controller="Coordinator" asp-action="ViewSessions">View Sessions</a>
+            <a asp-controller="Coordinator" asp-action="SendMail">Send Mail</a>
+            <a asp-controller="Coordinator" asp-action="Profile">Profile</a>
+            <a asp-controller="Authentication" asp-action="ResetPassword">Reset Password</a>
+        </div>
+    }
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <div id="adminSidebar" class="coord-sidebar">
+
+            <div class="sidebar-header">
+                <h4>Admin Panel</h4>
+                <button class="sidebar-close-btn" onclick="toggleAdminSidebar()">✕</button>
+            </div>
+
+            <a asp-controller="Admin" asp-action="AddYear">Add Year</a>
+            <a asp-controller="Admin" asp-action="AddBranch">Add Branch</a>
+            <a asp-controller="Admin" asp-action="AddSTudentCount">Add Students Count</a>
+            <a asp-controller="Admin" asp-action="DeactivateCoordinators">Deactivate Coordinators</a>
+            <a asp-controller="Admin" asp-action="AddCoordinator">Add New Coordinator</a>
+            <a asp-controller="Admin" asp-action="AddStudents">Add Students</a>
+            <a asp-controller="Admin" asp-action="RemoveStudents">Remove Students</a>
+            <a asp-controller="Coordinator" asp-action="SendMail">Send Email</a>
+            <a asp-controller="Admin" asp-action="Profile">Profile</a>
+        </div>
+    }
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container py-5">
+            <div class="row gy-4">
+
+                <!-- Brand -->
+                <div class="col-md-4">
+                    <h5 class="footer-brand">TPC Portal</h5>
+                    <p class="footer-text">
+                        A centralized platform connecting Training & Placement Cell,
+                        coordinators, and students for seamless placement communication.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-4">
+                    <h6 class="footer-title">Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-controller="Home" asp-action="Resources">Resources</a></li>
+                        <li><a asp-controller="Home" asp-action="Coordinators">Coordinators</a></li>
+                        <li><a asp-controller="Home" asp-action="Privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Info -->
+                <div class="col-md-4">
+                    <h6 class="footer-title">Contact</h6>
+                    <p class="footer-text mb-1">Training & Placement Cell</p>
+                    <p class="footer-text mb-1">Email: tpc@college.edu</p>
+                    <p class="footer-text">© 2026 TPC Portal</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/AdminDashboard.js" asp-append-version="true"></script>
+    <script src="~/js/DeleteConfirmation.js"></script>
+
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("coordSidebar");
+            if (sidebar) sidebar.classList.toggle("active");
+        }
+
+        function toggleAdminSidebar() {
+            const sidebar = document.getElementById("adminSidebar");
+            if (sidebar) sidebar.classList.toggle("active");
+        }
+    </script>
+
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

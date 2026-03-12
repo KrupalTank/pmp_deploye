@@ -1,0 +1,149 @@
+﻿@model PlacementMentorshipPortal.Models.StudentStatsViewModel
+@{
+    ViewData["Title"] = "Placement Analysis";
+}
+
+<div class="container py-4">
+    <h2 class="text-center mb-4" style="color: #0f172a; font-weight: 700;">🔍 Placement Deep-Dive</h2>
+
+    <div class="card shadow-sm border-0 rounded-4 mb-4">
+        <div class="card-body p-4">
+            <div class="row align-items-end">
+                <div class="col-md-5">
+                    <label class="fw-bold mb-2">Branch</label>
+                    <select id="branchSelector" class="form-select border-primary">
+                        <option value="">-- Select Branch --</option>
+                        @foreach (var b in ViewBag.Branches)
+                        {
+                            <option value="@b.Bid">@b.Bname</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-5">
+                    <label class="fw-bold mb-2">Year</label>
+                    <select id="yearSelector" class="form-select border-primary">
+                        <option value="">-- Select Year --</option>
+                        @foreach (var y in ViewBag.Years)
+                        {
+                            <option value="@y.Yid">@y.Year1</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-2 mt-3 mt-md-0">
+                    <button id="btnAnalyze" class="btn btn-primary w-100 py-2 fw-bold">Analyze</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="placeholder" class="text-center py-5">
+        <h4 class="text-muted">Select branch and year to visualize placement details</h4>
+    </div>
+    <div id="statsCards" class="row mb-4" style="display: none;">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 bg-primary text-white text-center p-3">
+                <h6 class="text-uppercase small mb-1">Total Placed</h6>
+                <h2 id="txtTotal" class="mb-0 fw-bold">0</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 bg-success text-white text-center p-3">
+                <h6 class="text-uppercase small mb-1">Highest Package</h6>
+                <h2 id="txtMax" class="mb-0 fw-bold">0 LPA</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 bg-info text-white text-center p-3">
+                <h6 class="text-uppercase small mb-1">Average Package</h6>
+                <h2 id="txtAvg" class="mb-0 fw-bold">0 LPA</h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="chartSection" class="row mb-4" style="display: none;">
+        <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+            <div class="card shadow-sm border-0 rounded-4 p-4">
+                <h5 class="fw-bold text-dark mb-3 text-center">Company Recruitment Breakdown</h5>
+                <div style="height: 400px;">
+                    <canvas id="companyChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            let myChart;
+
+            document.getElementById('btnAnalyze').addEventListener('click', async function() {
+                const bid = document.getElementById('branchSelector').value;
+                const yid = document.getElementById('yearSelector').value;
+
+                if (!bid || !yid) { alert("Please select both Branch and Year."); return; }
+
+                try {
+                    const res = await fetch(`/Home/GetCompanyBreakdown?bid=${bid}&yid=${yid}`);
+                    const data = await res.json();
+
+                    if (!data.companyData || data.companyData.length === 0) {
+                        alert("No recruitment data found for this selection.");
+                        return;
+                    }
+
+                    document.getElementById('placeholder').style.display = 'none';
+                    document.getElementById('statsCards').style.display = 'flex';
+                    document.getElementById('chartSection').style.display = 'block';
+
+                    document.getElementById('txtTotal').textContent = data.totalPlaced;
+                    document.getElementById('txtMax').textContent = data.maxPackage + " LPA";
+                    document.getElementById('txtAvg').textContent = data.avgPackage + " LPA";
+
+                    renderChart(data.companyData);
+                } catch (err) { console.error("Error:", err); }
+            });
+
+            function renderChart(companyList) {
+                const ctx = document.getElementById('companyChart').getContext('2d');
+                if (myChart) myChart.destroy();
+
+                myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: companyList.map(x => x.companyName),
+                        datasets: [{
+                            label: 'Students Recruited',
+                            data: companyList.map(x => x.count),
+                            backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                            borderRadius: 6,
+                            barThickness: 25 // Keeps bars consistent in centered layout
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1, // Forces the 1, 2, 3... increment
+                                    callback: function(value) {
+                                        if (value % 1 === 0) { return value; } // Only show integers
+                                    }
+                                },
+                                title: { display: true, text: 'Number of Students' }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: (ctx) => `Avg Package: ${companyList[ctx.dataIndex].avgPackage} LPA`
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        </script>
+}

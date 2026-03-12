@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Add Students (Bulk)";
+}
+
+<link rel="stylesheet" href="~/css/forms.css" />
+
+<h2 class="page-title">📥 Add Students (Bulk)</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["Success"]
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger text-center">
+        @TempData["Error"]
+    </div>
+}
+
+<div class="form-card">
+
+    <form asp-action="AddStudentsMethod" asp-controller="Admin" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+
+        <!-- Excel File Upload -->
+        <div class="mb-3">
+            <label for="file" class="form-label">
+                Excel file (.xlsx or .xls) — columns: Mail | Bname | Entryyear
+            </label>
+            <input type="file" name="file" id="file" accept=".xlsx,.xls" class="form-control" required />
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary btn-submit">
+            ⬆️ Upload and Import
+        </button>
+
+        <p class="text-muted mt-3">
+            If the first row is a header (Mail, Bname, Entryyear), it will be ignored automatically.
+        </p>
+    </form>
+
+    <!-- Back -->
+    <a asp-action="Index" class="back-link text-primary">
+        ← Go To Index Page
+    </a>
+</div>

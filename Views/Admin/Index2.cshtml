@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Welcome To Admin Page</h1>
+<br />
+<a asp-controller="Admin" asp-action="AddYear">Add Year</a>
+<br />
+<a asp-controller="Admin" asp-action="AddBranch">Add Branch</a>
+<br />
+
+<form asp-controller="Admin" asp-action="DeactivateCoordinators" method="post" id="deactivate-form" style="display:inline;">
+    @Html.AntiForgeryToken()
+    <label for="deactivate-button" class="me-2">Deactivate all previous-year coordinators</label>
+    <button id="deactivate-button" type="submit" class="btn btn-danger">Deactivate All</button>
+</form>
+<br />
+
+@{
+    if (TempData["Success"] != null)
+    {
+        <div class="alert alert-info">
+            @TempData["Success"]
+        </div>
+        <br />
+    }
+}
+<a asp-controller="Admin" asp-action="AddCoordinator">Add New Coordinator</a>
+<br />
+<a asp-controller="Admin" asp-action="AddStudents">Add Students</a>
+<br />
+
+@section Scripts {
+    <script>
+        (function () {
+            var form = document.getElementById('deactivate-form');
+            if (!form) return;
+            form.addEventListener('submit', function (e) {
+                var confirmed = confirm('Are you sure you want to deactivate all active coordinators? This action cannot be undone.');
+                if (!confirmed) {
+                    e.preventDefault();
+                }
+            });
+        })();
+    </script>
+}
