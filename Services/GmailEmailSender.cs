@@ -28,8 +28,10 @@ namespace PlacementMentorshipPortal.Services
             using var client = new SmtpClient();
             // ADD THIS LINE: It allows the SSL handshake to proceed in cloud environments
             client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-            var secureOption = useStartTls ? SecureSocketOptions.StartTls : SecureSocketOptions.Auto;
-
+            //var secureOption = useStartTls ? SecureSocketOptions.StartTls : SecureSocketOptions.Auto;
+            var secureOption = (port == 465) 
+                ? SecureSocketOptions.SslOnConnect 
+                : SecureSocketOptions.StartTls;
             await client.ConnectAsync(host, port, secureOption).ConfigureAwait(false);
 
             if (!string.IsNullOrWhiteSpace(user))
