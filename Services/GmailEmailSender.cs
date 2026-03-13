@@ -26,6 +26,8 @@ namespace PlacementMentorshipPortal.Services
             var useStartTls = bool.TryParse(_config["Smtp:UseStartTls"], out var s) ? s : true;
 
             using var client = new SmtpClient();
+            // ADD THIS LINE: It allows the SSL handshake to proceed in cloud environments
+            client.ServerCertificateValidationCallback = (s, c, h, e) => true;
             var secureOption = useStartTls ? SecureSocketOptions.StartTls : SecureSocketOptions.Auto;
 
             await client.ConnectAsync(host, port, secureOption).ConfigureAwait(false);
