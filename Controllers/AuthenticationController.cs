@@ -154,10 +154,15 @@ namespace PlacementMentorshipPortal.Controllers
             }
             catch (Exception ex)
             {
-                TempData["Error"] = "Email service error. Please try again later.";
-                // Log ex.Message for debugging
+                // This logs the ACTUAL error to your Render 'Logs' tab
+                Console.WriteLine("CRITICAL EMAIL ERROR: " + ex.Message);
+                if (ex.InnerException != null) 
+                    Console.WriteLine("Inner Exception: " + ex.InnerException.Message);
+            
+                TempData["Error"] = $"Email error: {ex.Message}"; // Temporarily show the real error
                 return View("ForgotPassword");
             }
+            
         }
 
         [HttpGet]
