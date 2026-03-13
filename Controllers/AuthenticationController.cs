@@ -127,7 +127,7 @@ namespace PlacementMentorshipPortal.Controllers
             if (coordinator == null)
             {
                 TempData["Error"] = "Account Not Found.";
-                return View("ForgetPassword");
+                return View("ForgotPassword");
             }
 
             // Generate OTP
@@ -156,7 +156,7 @@ namespace PlacementMentorshipPortal.Controllers
             {
                 TempData["Error"] = "Email service error. Please try again later.";
                 // Log ex.Message for debugging
-                return View("ForgetPassword");
+                return View("ForgotPassword");
             }
         }
 
