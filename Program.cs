@@ -47,7 +47,14 @@ builder.Services.AddHangfire(config => config
 
 // 2. Add the processing server
 builder.Services.AddHangfireServer();
-
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(20);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+    // Set to 'Always' because Render uses HTTPS
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always; 
+});
 // 3. Add the Hangfire Dashboard (Optional: to see your jobs at /hangfire)
 
 var app = builder.Build();
